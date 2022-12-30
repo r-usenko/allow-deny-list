@@ -31,5 +31,5 @@ func (m ErrAccess) Error() string {
 		tpl = "Unavailable on [%s], got %s"
 	}
 
-	return fmt.Sprintf(tpl, listStrings, m.Value)
+	return fmt.Sprintf(tpl, listStrings, fmt.Sprint(m.Value))
 }
