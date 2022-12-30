@@ -35,6 +35,7 @@ func (m *module) IsAllowed(value interface{}) error {
 	return ErrAccess{
 		IsDenied: m.isDenied,
 		List:     m.list,
+		Value:    value,
 	}
 }
 

@@ -10,6 +10,7 @@ var _ error = (*ErrAccess)(nil)
 type ErrAccess struct {
 	IsDenied bool
 	List     []interface{}
+	Value    interface{}
 }
 
 func (m ErrAccess) Error() string {
@@ -25,10 +26,10 @@ func (m ErrAccess) Error() string {
 		listStrings = strings.Join(tmp, ",")
 	}
 
-	var tpl = "Available only on [%s]"
+	var tpl = "Available only on [%s], got %s"
 	if m.IsDenied {
-		tpl = "Unavailable on [%s]"
+		tpl = "Unavailable on [%s], got %s"
 	}
 
-	return fmt.Sprintf(tpl, listStrings)
+	return fmt.Sprintf(tpl, listStrings, m.Value)
 }
